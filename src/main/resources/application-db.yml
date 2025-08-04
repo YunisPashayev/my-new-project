@@ -1,6 +1,6 @@
-git remote add origin https://github.com/YunisPashayev/my-new-project.gitgit spring:
+spring:
   datasource:
-    url: jdbc:postgresql://dpg-d28aame3jp1c738674gg-a:5432/my_bobodb_example_user
+    url: jdbc:postgresql://dpg-d28aame3jp1c738674gg-a:5432/my_bobodb_example
     username: my_bobodb_example_user
     password: uFNvWAnogxYMondhAjBzlnDqQhqKYa1H
     driver-class-name: org.postgresql.Driver
