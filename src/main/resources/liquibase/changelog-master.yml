@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/changelog/01-user_entity.yml
+  - include:
+      file: liquibase/changelog/02-user_entity_roles.yml
+  - include:
+      file: liquibase/changelog/03-store_entity.yml
+  - include:
+      file: liquibase/changelog/04-product_entity.yml
+  - include:
+      file: liquibase/changelog/05-product_image_entity.yml
+  - include:
+      file: liquibase/changelog/06-product_entity_colors.yml
+  - include:
+      file: liquibase/changelog/07-product_size_quantity.yml
+  - include:
+      file: liquibase/changelog/08-user_entity_additional_fields.yml
+  - include:
+      file: liquibase/changelog/09-cart_entity.yml
+  - include:
+      file: liquibase/changelog/10-orders_entity.yml
+  - include:
+      file: liquibase/changelog/11-order_items_entity.yml

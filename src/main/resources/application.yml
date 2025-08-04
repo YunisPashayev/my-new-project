@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: db
+  web:
+    resources:
+      static-locations: classpath:/static/, file:images/
+
+server:
+  servlet:
+    context-path: /home
+
+jwt:
+  secret: MzJieXRlc2xvbmdzZWNyZXRrZXltb3JldGhhbmMzMmJ5dGVz
+  duration: 3600000000
+
+file:
+  upload-dir: images
+
+cloudinary:
+  cloud-name: drzqytgdt
+  api-key: 968449147357678
+  api-secret: toZUNGbC3jF44TLI3RhyQiFG8gI
+

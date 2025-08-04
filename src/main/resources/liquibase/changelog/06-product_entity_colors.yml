@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: Sabina
+      changes:
+        - createTable:
+            tableName: product_entity_colors
+            columns:
+              - column:
+                  name: product_entity_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: colors
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: product_entity_colors
+            baseColumnNames: product_entity_id
+            constraintName: fk_product_colors
+            referencedTableName: product_entity
+            referencedColumnNames: id

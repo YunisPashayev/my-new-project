@@ -1,0 +1,21 @@
+git remote add origin https://github.com/YunisPashayev/my-new-project.gitspring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bobo
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql= true:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/liquibase/changelog-master.yml
+    database-change-log-table: DATABASECHANGELOG
+    database-change-log-lock-table: DATABASECHANGELOGLOCK

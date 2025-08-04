@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: 09-create-cart-table
+      author: system
+      changes:
+        - createTable:
+            tableName: cart
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: size
+                  type: varchar(10)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+        - addUniqueConstraint:
+            tableName: cart
+            columnNames: user_id, product_id, size
+            constraintName: uk_cart_user_product_size
+        - createIndex:
+            tableName: cart
+            indexName: idx_cart_user
+            columns:
+              - column:
+                  name: user_id
+        - createIndex:
+            tableName: cart
+            indexName: idx_cart_product
+            columns:
+              - column:
+                  name: product_id
+        - addForeignKeyConstraint:
+            baseTableName: cart
+            baseColumnNames: user_id
+            constraintName: fk_cart_user
+            referencedTableName: user_entity
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            baseTableName: cart
+            baseColumnNames: product_id
+            constraintName: fk_cart_product
+            referencedTableName: product_entity
+            referencedColumnNames: id

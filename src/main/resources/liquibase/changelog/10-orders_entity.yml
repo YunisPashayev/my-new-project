@@ -1,0 +1,95 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10-create-orders-table
+      author: system
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_number
+                  type: varchar(20)
+                  constraints:
+                    unique: true
+                    nullable: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_amount
+                  type: decimal(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: delivery_address
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone_number
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: notes
+                  type: varchar(1000)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: estimated_delivery_date
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: actual_delivery_date
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+        - createIndex:
+            tableName: orders
+            indexName: idx_order_user
+            columns:
+              - column:
+                  name: user_id
+        - createIndex:
+            tableName: orders
+            indexName: idx_order_status
+            columns:
+              - column:
+                  name: status
+        - createIndex:
+            tableName: orders
+            indexName: idx_order_created
+            columns:
+              - column:
+                  name: created_at
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: user_id
+            constraintName: fk_orders_user
+            referencedTableName: user_entity
+            referencedColumnNames: id

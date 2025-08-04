@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 08-add-user-additional-fields
+      author: system
+      changes:
+        - addColumn:
+            tableName: user_entity
+            columns:
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                  defaultValue: ''
+              - column:
+                  name: surname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                  defaultValue: ''
+              - column:
+                  name: address
+                  type: varchar(500)
+                  constraints:
+                    nullable: true

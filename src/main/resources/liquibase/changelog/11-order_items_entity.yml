@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - changeSet:
+      id: 11-create-order-items-table
+      author: system
+      changes:
+        - createTable:
+            tableName: order_items
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: size
+                  type: varchar(10)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: unit_price
+                  type: decimal(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_price
+                  type: decimal(12,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_image
+                  type: varchar(500)
+                  constraints:
+                    nullable: true
+        - createIndex:
+            tableName: order_items
+            indexName: idx_order_item_order
+            columns:
+              - column:
+                  name: order_id
+        - createIndex:
+            tableName: order_items
+            indexName: idx_order_item_product
+            columns:
+              - column:
+                  name: product_id
+        - addForeignKeyConstraint:
+            baseTableName: order_items
+            baseColumnNames: order_id
+            constraintName: fk_order_items_order
+            referencedTableName: orders
+            referencedColumnNames: id
+        - addForeignKeyConstraint:
+            baseTableName: order_items
+            baseColumnNames: product_id
+            constraintName: fk_order_items_product
+            referencedTableName: product_entity
+            referencedColumnNames: id
