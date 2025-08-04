@@ -1,4 +1,4 @@
-git remote add origin https://github.com/YunisPashayev/my-new-project.gitspring:
+git remote add origin https://github.com/YunisPashayev/my-new-project.gitgit spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bobo
     username: postgres
