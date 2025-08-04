@@ -1,4 +1,9 @@
+FROM gradle:8.4-jdk17 AS builder
+COPY . /home/app
+WORKDIR /home/app
+RUN gradle clean build -x test
+
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
-COPY build/libs/ecommerce-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /home/app/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
